@@ -1,0 +1,91 @@
+﻿@page "/EmployeeBiodatasummary"
+
+@using AxisPensionsEmployeeSystem.Models
+@using DataAccessLibrary;
+
+@inject IDataAccess _data
+@inject IConfiguration _config
+
+<h3>Employee Biodata Summary</h3>
+
+@if(employeeBiodataSummary == null)
+{
+    <div class="spinner-grow" role="status">
+        
+    </div>
+    <span class="sr-only">Loading...</span>
+}else{
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>EmployeeId</th>
+      <th>Photo</th>
+      <th>StaffNumber</th>
+      <th>FirstName</th>
+      <th>Surname</th>
+      <th>Appointmentdate</th>
+       <th>TinNumber</th>
+      <th>SnnitNumber</th>
+      <th>DoB</th>
+       <th>Title</th>
+      <th>Gender</th>
+      <th>CellPhone</th>
+       <th>Email</th>
+       <th>CorrespondenceAddress</th>
+      <th>Gender</th>
+      <th>CellPhone</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+     @foreach(var a in employeeBiodataSummary)
+     {
+     <tr>
+      <td>
+        <div class="d-flex align-items-center">
+        <div class="ms-3">
+            <p class="fw-bold mb-1">ID</p>
+            <p class="text-muted mb-0">john.doe@gmail.com</p>
+          </div>
+          <img
+              src="#"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+              />
+          <div class="ms-3">
+            <p class="fw-bold mb-1">John Doe</p>
+            <p class="text-muted mb-0">john.doe@gmail.com</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <p class="fw-normal mb-1">Software engineer</p>
+        <p class="text-muted mb-0">IT department</p>
+      </td>
+      <td>
+        <span class="badge badge-success rounded-pill d-inline">Active</span>
+      </td>
+      <td>Senior</td>
+      <td>
+        <button type="button" class="btn btn-link btn-sm btn-rounded">
+          Edit
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+}
+@code {
+    List<EmployeeBiodata> employeeBiodataSummary;
+
+    //Load the intial Data
+    protected override async Task OnInitializedAsync()
+    {
+        string sql = "SELECT *FROM employee_biodata";
+        employeeBiodataSummary = await _data.LoadData<EmployeeBiodata, dynamic>(sql, new {}, 
+        _config.GetConnectionString("DbConnection"));
+    }
+}
+  

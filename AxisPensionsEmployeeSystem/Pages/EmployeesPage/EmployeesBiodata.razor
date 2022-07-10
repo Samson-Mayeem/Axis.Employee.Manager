@@ -1,0 +1,73 @@
+﻿@page "/employeesBiodata"
+@using AxisPensionsEmployeeSystem.Models
+@using DataAccessLibrary
+
+@inject IDataAccess _data
+@inject IConfiguration _conf
+
+<h3>Add Employee's Bio-Data</h3>
+<form class="row g-3">
+ 
+  <div class="col-12">
+    <label for="EmployeeId" class="form-label">EmployeeId</label>
+    <input type="text" class="form-control" id="EmployeeId" placeholder="EmployeeId">
+  </div>
+  <div class="col-12">
+    <label for="StaffNumber" class="form-label">Sur Name</label>
+    <input type="text" class="form-control" id="StaffNumber" placeholder="Staff Number">
+  </div>
+  <div class="col-12">
+    <label for=" FirstName" class="form-label"> FirstName</label>
+    <input type="text" class="form-control" id=" FirstName" placeholder="First Name">
+  </div>
+  <div class="col-12">
+    <label for="Surname" class="form-label">Surname</label>
+    <input type="text" class="form-control" id="Surname" placeholder="Surname">
+  </div>
+  <div class="col-12">
+    <label for="Appointmentdate" class="form-label">Appointment date</label>
+    <input type="text" class="form-control" id="Appointmentdate" placeholder="Appointment date">
+  </div>
+  <div class="col-12">
+    <label for="TinNumber" class="form-label">Tin Number</label>
+    <input type="text" class="form-control" id="TinNumber" placeholder="Tin Number">
+  </div>
+  <div class="col-12">
+    <label for="SnnitNumber" class="form-label">Snnit Number</label>
+    <input type="text" class="form-control" id="SnnitNumber" placeholder="Snnit Number">
+  </div>
+  <div class="col-12">
+    <label for="Title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="DoB" placeholder="Title">
+  </div>
+  <div class="col-12">
+    <label for="Gender" class="form-label">Gender</label>
+    <input type="text" class="form-control" id="Gender" placeholder="Gender">
+  </div>
+  <div class="col-12">
+    <label for=" CellPhone" class="form-label"> CellPhone</label>
+    <input type="text" class="form-control" id=" CellPhone"placeholder="CellPhone">
+  </div>
+  <div class="col-12">
+    <label for="Email" class="form-label"> Email</label>
+    <input type="text" class="form-control" id="CellPhone"placeholder="Email">
+  </div>
+  <div class="col-12">
+    <label for="CorrespondenceAddress" class="form-label">Correspondence Address</label>
+    <input type="text" class="form-control" id="CellPhone"placeholder="Correspondence Address">
+  </div>
+  <div class="col-12">
+    <label for="ImageUrl" class="form-label">Image</label>
+    <input type="text" class="form-control" id="CellPhone"placeholder="Email">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-secondary">Submit</button>
+  </div>
+</form>
+
+@{
+    private async Task InsertBioData()
+    {
+        
+    }
+}
