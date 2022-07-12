@@ -1,6 +1,18 @@
 ﻿@page "/EmploymentDataSummary"
+@using AxisPensionsEmployeeSystem.Models
+@using DataAccessLibrary;
+@using Microsoft.Extensions.Configuration
+
+@inject IDataAccess _data
+@inject IConfiguration _config
+
+
 
 <h3>EmploymentDataSummary</h3>
+@if (employmentDatas == null)
+{
+    <p>Loading</p>
+}
 <table class="table">
   <thead>
     <tr>
@@ -18,7 +30,7 @@
       <td>Otto</td>
     </tr>
 
-    <tr>
+    <tr> 
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
@@ -26,5 +38,12 @@
   </tbody>
 </table>
 @code {
+    List<EmploymentData> employmentDatas;
 
+    //Load the intial Data
+    protected override async Task OnInitializedAsync()
+    {
+        string sql = "SELECT *FROM employmentdata";
+        employmentDatas = await _data.LoadData<EmploymentData, dynamic>(sql, new {}, _config.GetConnectionString("DbConnection"));
+    }
 }

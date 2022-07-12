@@ -5,12 +5,12 @@
         public int EmploymentId { get; set; }
         public int EmployeeBiodataId { get; set; }
         public string FirstName { get; set; }
-        private string Surname { get; set; }
-        private string Designation {get; set;}
-        private string Jobgrade {get; set;}
-        private string EmployeeType { get; set; }
-        private string HeadOfDepartmentName { get; set; }
-        private string ContractFrequencyCode { get; set; }
-        private string ContractDuration { get; set; }
+        public string Surname { get; set; }
+        public string Designation {get; set;}
+        public string Jobgrade {get; set;}
+        public string EmployeeType { get; set; }
+        public string HeadOfDepartmentName { get; set; }
+        public string ContractFrequencyCode { get; set; }
+        public string ContractDuration { get; set; }
     }
 }

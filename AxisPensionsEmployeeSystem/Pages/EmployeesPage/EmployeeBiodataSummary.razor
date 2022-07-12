@@ -2,6 +2,7 @@
 
 @using AxisPensionsEmployeeSystem.Models
 @using DataAccessLibrary;
+@using Microsoft.Extensions.Configuration
 
 @inject IDataAccess _data
 @inject IConfiguration _config
@@ -44,29 +45,40 @@
       <td>
         <div class="d-flex align-items-center">
         <div class="ms-3">
-            <p class="fw-bold mb-1">ID</p>
-            <p class="text-muted mb-0">john.doe@gmail.com</p>
+            <p class="fw-bold mb-1">@a.EmployeeId</p>
+            <p class="text-muted mb-0">@a.Email</p>
           </div>
           <img
-              src="#"
+              src="@a.ImageUrl"
               alt=""
               style="width: 45px; height: 45px"
               class="rounded-circle"
               />
           <div class="ms-3">
-            <p class="fw-bold mb-1">John Doe</p>
-            <p class="text-muted mb-0">john.doe@gmail.com</p>
+            <p class="fw-bold mb-1">@a.StaffNumber</p>
+            <p class="text-muted mb-0">@a.FirstName</p>
           </div>
         </div>
       </td>
       <td>
-        <p class="fw-normal mb-1">Software engineer</p>
-        <p class="text-muted mb-0">IT department</p>
+        <p class="fw-normal mb-1">@a.Surname</p>
+        <p class="text-muted mb-0">@a.Appointmentdate</p>
       </td>
       <td>
-        <span class="badge badge-success rounded-pill d-inline">Active</span>
+        <span class="badge badge-success rounded-pill d-inline">@a.TinNumber</span>
       </td>
+      <td>@a.SnnitNumber</td>
+            <td>@a.Title</td>
+
+             <td>@a.Gender</td>
+
+             <td>@a.CellPhone</td>
+
+              <td>@a.Email</td>
+      <td>@a.CorrespondenceAddress</td>
+      <td>@a.Gender</td>
       <td>Senior</td>
+
       <td>
         <button type="button" class="btn btn-link btn-sm btn-rounded">
           Edit
@@ -78,13 +90,13 @@
 </table>
 }
 @code {
-    List<EmployeeBiodata> employeeBiodataSummary;
+   List<EmployeeBiodata> employeeBiodataSummary;
 
     //Load the intial Data
     protected override async Task OnInitializedAsync()
     {
         string sql = "SELECT *FROM employee_biodata";
-        employeeBiodataSummary = await _data.LoadData<EmployeeBiodata, dynamic>(sql, new {}, 
+         employeeBiodataSummary = await _data.LoadData<EmployeeBiodata, dynamic>(sql, new {},
         _config.GetConnectionString("DbConnection"));
     }
 }

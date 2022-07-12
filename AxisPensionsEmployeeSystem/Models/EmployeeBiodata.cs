@@ -2,19 +2,19 @@
 {
     public class EmployeeBiodata
     {
-        private string EmployeeId { get; set; }
-        private string StaffNumber { get; set; }
-        private string FirstName { get; set; }
-        private string Surname { get; set; }
-        private string Appointmentdate {get; set;}
-        private int TinNumber { get; set;}
-        private string SnnitNumber { get; set; }
-        private DateTime DoB { get; set; }
-        private string Title { get; set; }
-        private string Gender { get; set; }
-        private int CellPhone { get; set; }
-        private string Email { get; set; }
-        private  string CorrespondenceAddress { get; set; }
-        private string ImageUrl { get; set; }
+       public string EmployeeId { get; set; }
+        public string StaffNumber { get; set; }
+        public string FirstName { get; set; }
+        public string Surname { get; set; }
+        public string Appointmentdate {get; set;}
+        public int TinNumber { get; set;}
+        public string SnnitNumber { get; set; }
+        public DateTime DoB { get; set; }
+        public string Title { get; set; }
+        public string Gender { get; set; }
+        public int CellPhone { get; set; }
+        public string Email { get; set; }
+        public string CorrespondenceAddress { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

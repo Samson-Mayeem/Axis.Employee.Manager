@@ -1,53 +1,79 @@
 ﻿@page "/employmentdata"
 
 <h3>Add Employment Data</h3>
-
-<form class="row g-3">
- <div class="col-12">
-    <label for="EmploymentId" class="form-label">Employment Id</label>
-    <input type="text" class="form-control" id="EmploymentId" placeholder="EmploymentId">
- </div>
+@if (createStatus)
+{
+    <EditForm class="row g-3" Model = "@addEmployment" OnInvalidSubmit = "@InsertEmploymentData">    
+        <div class="col-12">
+        <label for="EmploymentId" class="form-label">Employment Id</label>
+        <input type="text" class="form-control" id="EmploymentId" placeholder="EmploymentId" @bind-value ="addEmployment">
+    </div>
  <div class="col-12">
     <label for="EmployeeBiodataId" class="form-label">EmployeeBiodata Id</label>
-    <input type="text" class="form-control" id="EmployeeBiodataId" placeholder="EmployeeBiodataId">
+    <input type="text" class="form-control" id="EmployeeBiodataId" placeholder="EmployeeBiodataId"@bind-value ="addEmployment.EmploymentId">
  </div>
   <div class="col-12">
     <label for="FirstName" class="form-label">First Name</label>
-    <input type="text" class="form-control" id="FirstName" placeholder="First Name">
+    <input type="text" class="form-control" id="FirstName" placeholder="First Name"@bind-value ="addEmployment.FirstName">
   </div>
   <div class="col-12">
     <label for="SurName" class="form-label">Sur Name</label>
-    <input type="text" class="form-control" id="SurName" placeholder="Sur Name">
+    <input type="text" class="form-control" id="SurName" placeholder="Sur Name"@bind-value ="addEmployment.SurName">
   </div>
   <div class="col-12">
     <label for="designation" class="form-label">Designation</label>
-    <input type="text" class="form-control" id="designation" placeholder="designation">
+    <input type="text" class="form-control" id="designation" placeholder="designation"@bind-value ="addEmployment.designation">
   </div>
   <div class="col-12">
     <label for="Jobgrade" class="form-label">Job Grade</label>
-    <input type="text" class="form-control" id="Jobgrade" placeholder="Job Grade">
+    <input type="text" class="form-control" id="Jobgrade" placeholder="Job Grade"@bind-value ="addEmployment.Jobgrade">
   </div>
   <div class="col-12">
     <label for="EmployeeType" class="form-label">Employee Type</label>
-    <input type="text" class="form-control" id="EmployeeType" placeholder="Employee Type">
+    <input type="text" class="form-control" id="EmployeeType" placeholder="Employee Type"@bind-value ="addEmployment.EmployeeType">
   </div>
   <div class="col-12">
     <label for="HeadOfDepartmentName" class="form-label">Head Of Department Name</label>
-    <input type="text" class="form-control" id="HeadOfDepartmentName" placeholder="Head Of Department Name">
+    <input type="text" class="form-control" id="HeadOfDepartmentName" placeholder="Head Of Department Name"@bind-value ="addEmployment.HeadOfDepartmentName">
   </div>
   <div class="col-12">
     <label for="ContractFrequencyCode" class="form-label">Contract Frequency Code</label>
-    <input type="text" class="form-control" id="ContractFrequencyCode" placeholder="Contract Frequency Code">
+    <input type="text" class="form-control" id="ContractFrequencyCode" placeholder="Contract Frequency Code"@bind-value ="addEmployment.ContractFrequencyCode">
   </div>
   <div class="col-12">
     <label for="ContractDuration" class="form-label">Contract Duration</label>
-    <input type="text" class="form-control" id="ContractFrequencyCode" placeholder="Contract Duration">
+    <input type="text" class="form-control" id="ContractDuration" placeholder="Contract Duration"@bind-value ="addEmployment.ContractDuration">
   </div>
 
   <div class="col-12">
     <button type="submit" class="btn btn-secondary">Submit</button>
   </div>
-</form>
+</EditForm>
+}
 @code {
+    public class AddEmploymentData
+    {
+        public int EmploymentId{ get; set; }
+        public string FirstName{ get; set; }
+        public string SurName{ get; set; }
+        public string designation{ get; set; }
+        public string Jobgrade{ get; set; }
+        public string EmployeeType{ get; set; }
+        public string HeadOfDepartmentName{ get; set; }
+        public string ContractFrequencyCode{ get; set; }
+        public string ContractDuration{ get; set; }
+    };
 
+    private AddEmploymentData addEmployment = new AddEmploymentData();
+    bool createStatus = true;
+    bool editStatus = false;
+    private async Task InsertEmploymentData()
+    {
+        EmploymentData a = new EmploymentData
+        {
+        EmploymentId = new EmploymentId(addEmployment.EmploymentId, addEmployment.FirstName, addEmployment.SurName,
+        addEmployment.designation, addEmployment.Jobgrade, addEmployment.EmployeeType, addEmployment.HeadOfDepartmentName, addEmployment.ContractFrequencyCode,
+        addEmployment.ContractDuration)
+        };
+    }
 }

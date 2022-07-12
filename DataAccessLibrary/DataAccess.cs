@@ -11,12 +11,12 @@ namespace DataAccessLibrary
 {
     public class DataAccess : IDataAccess
     {
-        public List<T> LoadData<T, U>(string sql, U paramenters, string connectionString)
+        public async Task<List<T>> LoadData<T, U>(string sql, U paramenters, string connectionString)
         {
             using (IDbConnection connection = new MySqlConnection(connectionString))
             {
-                List<T> rows = connection.Query<T>(sql, paramenters).ToList();
-                return rows;
+                var rows = await connection.QueryAsync<T>(sql, paramenters);
+                return rows.ToList();
             }
         }
 
