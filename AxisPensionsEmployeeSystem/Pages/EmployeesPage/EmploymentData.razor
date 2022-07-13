@@ -1,5 +1,12 @@
 ﻿@page "/employmentdata"
 
+@using AxisPensionsEmployeeSystem.Models
+@using Microsoft.Extensions.Configuration
+@using DataAccessLibrary 
+
+@inject IDataAccess _data
+@inject IConfiguration _config
+
 <h3>Add Employment Data</h3>
 @if (createStatus)
 {
@@ -70,10 +77,9 @@
     private async Task InsertEmploymentData()
     {
         EmploymentData a = new EmploymentData
-        {
-        EmploymentId = new EmploymentId(addEmployment.EmploymentId, addEmployment.FirstName, addEmployment.SurName,
-        addEmployment.designation, addEmployment.Jobgrade, addEmployment.EmployeeType, addEmployment.HeadOfDepartmentName, addEmployment.ContractFrequencyCode,
-        addEmployment.ContractDuration)
-        };
+            {
+                @* EmploymentId = new AddEmploymentData(addEmployment.EmploymentId),
+                FirstName = new string(addEmployment.FirstName) *@
+    };
     }
 }
